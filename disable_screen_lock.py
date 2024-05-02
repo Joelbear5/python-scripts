@@ -1,10 +1,12 @@
 import ctypes
 import time
 import datetime
+import pyautogui
 
 work_time = False
-WORK_HOUR_BEGIN = 9 # 9 am local
-WORK_HOUR_END = 19 # 7 pm local
+WORK_HOUR_BEGIN = 7 # 9 am local
+WORK_HOUR_END = 22 # 10 pm local
+moveUp = True
 
 while True:
 	try:
@@ -19,6 +21,12 @@ while True:
 		else:
 			# prevent screen lock (work time)
 			ctypes.windll.kernel32.SetThreadExecutionState(0x80000002)
+			# move the mouse a bit
+			if moveUp:
+				pyautogui.moveRel(0,1) 
+			else: 
+				pyautogui.moveRel(0,-1)
+			moveUp = not moveUp
 			if not work_time:
 				work_time = True
 				print(f"Work time has begun. Disabling screen lock. {timenow}")

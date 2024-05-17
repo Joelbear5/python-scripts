@@ -3,12 +3,9 @@ import time
 import datetime
 import pyautogui
 
-
-
-
 def main() -> None:
 	work_time = False
-	WORK_HOUR_BEGIN = 7 # 9 am local
+	WORK_HOUR_BEGIN = 7 # 7 am local
 	WORK_HOUR_END = 22 # 10 pm local
 	pyautogui.FAILSAFE = False #prevents Exception when mouse is in the 0,0 corner
 	
